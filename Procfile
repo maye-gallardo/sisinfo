@@ -1,1 +1,0 @@
-web: java -jar target/Historial-Medico-1.0.0.jar

@@ -6,8 +6,8 @@
 
     <groupId>com.ucbcba</groupId>
     <artifactId>Medical_History</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
