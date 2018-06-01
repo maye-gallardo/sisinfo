@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:mvc="http://www.springframework.org/schema/mvc">
+<style>
+    body{
+        background-image: url("https://www.viajaraargentinahoy.com.ar/wordpress/wp-content/uploads/2016/08/donde-estudiar-medicina-argentina.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    .row{
+        padding-left: 10%;
+
+    }
+
+    p{
+        font-size: 110px;
+        font-family: cursive;
+        padding-left: 1.5%;
+        color: #004F8B;
+        padding-top: 14%;
+        font-weight: 400;
+        text-decoration-line: underline;
+        text-decoration-style: wavy;
+    }
+
+    button{
+        height: 40px;
+        width: 170px;
+        background-color: #063F6F ;
+        color: white;
+    }
+    b {
+        color: white;
+    }
+    .bottom{
+        padding-left:5% ;
+    }
+    .boton{
+        margin-left: 3em;
+    }
+</style>
+<head>
+    <title>Medical History</title>
+    <mvc:resources mapping="/webjars/**" location="/webjars/"/>
+    <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <link href="webjars/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<p>Bienvenido</p>
+<body>
+    <div class="row">
+        <div class="col-md-7">
+            <form th:action="@{/login}" method="POST" class="form-signin">
+                    <br/>
+                    <input type="text" id="email" name="email"  th:placeholder="email"
+                           class="form-control" style="width: 250px; length: 100px;"/> <br/>
+
+                    <input type="password"  th:placeholder="contraseña"
+                           id="password" name="password" class="form-control" style="width: 250px; length: 100px;" /> <br />
+                <div class="boton">
+                    <button>Login</button>
+                </div>
+            </form>
+            <div class="bottom text">
+                ¿Eres nuevo?<a href="/registration"><b>Registrarse</b></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-image: url("https://image.freepik.com/foto-gratis/vista-superior-del-informe-de-examen-medico-telefono-celular-y-equipos-medicos-en-escritorio-de-madera_1387-541.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        opacity: 80;
+    }
+    .nav{
+        background-color: black;
+    }
+    .genera{
+        color: #E8F8F5;
+        background-color: black;
+        font-family: Calibri;
+        font-size: 15px;
+    }
+    a{
+        color: aliceblue;
+    }
+    .row{
+        color: black;
+        font-family: cursive;
+        font-size: 15px;
+        padding-top: 3%;
+        padding-left: 46%;
+    }
+    .row u h1{
+        padding-left: 4%;
+    }
+</style>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Medical History</title>
+    <script src="/webjars/jquery/3.0.0"></script>
+    <script src="/webjars/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <link href="/webjars/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="genera">
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/histories"><span class="glyphicon glyphicon-home" aria-hidden="true" style="color: white;"></span></a></li>
+                <li><a style="color: white; font-size: 15px;" href="/history/new">Nueva historial</a></li>
+            </ul>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="color: white; font-size: 15px;" href="/user/profile"><span class="glyphicon glyphicon-user"></span></a></li>
+                    <li><a style="color: white; font-size: 15px;" th:href="${'/logout'}"><Afiliados>Cerrar Sesion</Afiliados></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="row">
+    <u><h1>Perfil</h1></u>
+    <br/>
+    <b>Nombre:</b> <a th:text="${user.username}"></a>
+    <br/><br/>
+    <b>Apellido: </b><a th:text="${user.lastname}"></a>
+    <br/><br/>
+    <b>Email: </b><a th:text="${user.email}"></a>
+    <br/><br/>
+    <b>Fecha de Nacimiento:</b> <a th:text="${user.date}"></a>
+    <br/><br/>
+    <b>Ciudad: </b><a th:text="${user.city}"></a>
+    <br/><br/>
+    <b>Direccion:</b> <a th:text="${user.direc}"></a>
+    <br/><br/>
+</div>
+<center>
+    <a style="background-color: #086A87; color: aliceblue;" class="btn btn-default" th:href="${ '/histories'}">Volver</a>
+    <a style="background-color: #086A87; color: aliceblue;" class="btn btn-default" href="/edit/user/profile">Editar</a>
+</center>
+</body>
+</html>

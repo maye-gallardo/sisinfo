@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-image: url('/images/a.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        opacity: 80;
+    }
+    .nav{
+        background-color: black;
+    }
+    .genera{
+        color: #E8F8F5;
+        background-color: black;
+        font-family: Calibri;
+        font-size: 15px;
+    }
+    a{
+        color: aliceblue;
+    }
+    .row{
+        text-align: center;
+        color: black;
+        font-family: cursive;
+        font-size: 15px;
+        padding-top: 5%;
+        padding-left: 30%;
+    }
+    .row p{
+        font-size: 17px;
+    }
+    .row label{
+        font-family: cursive;
+        text-decoration: underline;
+    }
+
+</style>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Medical History</title>
+    <script src="/webjars/jquery/3.0.0"></script>
+    <script src="/webjars/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <link href="/webjars/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="genera">
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/histories"><span class="glyphicon glyphicon-home" aria-hidden="true" style="color: white;"></span></a></li>
+                <li><a style="color: white; font-size: 15px;" href="/history/new">Nueva historial</a></li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Buscar" value="" id="x"/>
+                </div>
+                <a style="color: white;" type="button"  class="glyphicon glyphicon-search" id="boton" onclick="buscar()"/>
+            </form>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="color: white; font-size: 15px;" href="/user/profile"><span class="glyphicon glyphicon-user"></span></a></li>
+                    <li><a style="color: white; font-size: 15px;" th:href="${'/logout'}"><Afiliados>Cerrar Sesion</Afiliados></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</nav>
+<div class="row">
+    <b><label style="font-size: 20px;"> TITULO </label></b><p class="card-title" th:text="${history.title}"></p>
+    <br/>
+    <b><label style="font-size: 20px;">TEXTO </label></b><p class="card-text" th:text="${history.text}"></p>
+    <br/>
+    <b><label style="font-size: 20px;">COMENTARIO </label></b><p class="card-text" th:text="${history.commentary}"></p>
+    <br/>
+    <b><label style="font-size: 20px;">FECHA </label></b><p class="card-text" th:text="${history.date}"></p>
+    <br/>
+    <b><label style="font-size: 20px;">CATEGORIA </label></b><p class="card-text" th:text="${history.category.name}"></p>
+    <br/>
+    <b><label style="font-size: 20px;">FOTO </label></b>
+    <br/>
+    <img th:src="${'/images/' + history.title + '.jpg'}" height= "300" width= "300" align="middle"/>
+    <br/>
+    <a style="background-color: #086A87; color: aliceblue;" class="btn btn-default" th:href="${ '/histories'}">Volver</a>
+    <a style="background-color: #086A87; color: aliceblue;" class="btn btn-default" th:href="${ '/history/edit/' + history.id}">Editar</a>
+
+</div>
+</body>
+</html>

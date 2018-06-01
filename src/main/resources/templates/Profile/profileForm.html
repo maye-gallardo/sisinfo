@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-image: url("https://image.freepik.com/foto-gratis/vista-superior-del-informe-de-examen-medico-telefono-celular-y-equipos-medicos-en-escritorio-de-madera_1387-541.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        opacity: 80;
+    }
+    .nav{
+        background-color: black;
+    }
+    .genera{
+        color: #E8F8F5;
+        background-color: black;
+        font-family: Calibri;
+        font-size: 15px;
+    }
+    a{
+        color: aliceblue;
+    }
+    .estil{
+        padding-left: 42%;
+    }
+</style>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Medical History</title>
+    <script src="/webjars/jquery/3.0.0"></script>
+    <script src="/webjars/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <link href="/webjars/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="genera">
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/histories"><span class="glyphicon glyphicon-home" aria-hidden="true" style="color: white;"></span></a></li>
+                <li><a style="color: white; font-size: 15px;" href="/history/new">Nueva historial</a></li>
+            </ul>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="color: white; font-size: 15px;" href="/user/profile"><span class="glyphicon glyphicon-user"></span></a></li>
+                    <li><a style="color: white; font-size: 15px;" th:href="${'/logout'}"><Afiliados>Cerrar Sesion</Afiliados></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <br/>
+    <center><u><h1>Editar Perfil</h1></u></center>
+    <form class="form-horizontal" th:object="${user}" th:action="@{/user/save/edit}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{roles}"/>
+        <input type="hidden" th:field="*{email}"/>
+        <input type="hidden" th:field="*{password}"/>
+        <input type="hidden" th:field="*{passwordConfirm}"/>
+        <div class="estil">
+            <div style="width: 200px;" class="form-group">
+                <label>Nombre:</label>
+                <input type="text" class="form-control" th:field="*{username}"/>
+                <span style="color: red;" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Errors</span>
+            </div>
+
+            <div style="width: 200px;" class="form-group">
+                <label>Apellido:</label>
+                <input type="text" class="form-control" th:field="*{lastname}"/>
+                <span style="color: red;" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Errors</span>
+            </div>
+
+            <div style="width: 150px;" class="form-group">
+                <label>Fecha de nacimiento:</label>
+                <input type="date" class="form-control" th:field="*{date}"/>
+                <span style="color: red;" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Errors</span>
+            </div>
+
+            <div style="width: 200px;" class="form-group">
+                <label>Ciudad:</label>
+                <input type="text" class="form-control" th:field="*{city}"/>
+                <span style="color: red;" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">Errors</span>
+            </div>
+
+            <div style="width: 200px;" class="form-group">
+                <label>Direccion:</label>
+                <input type="text" class="form-control" th:field="*{direc}"/>
+                <span style="color: red;" th:if="${#fields.hasErrors('direc')}" th:errors="*{direc}">Errors</span>
+            </div>
+        </div>
+        <center>
+            <div class="row">
+                <a style="background-color: #086A87; color: aliceblue;" class="btn btn-default" th:href="${ '/user/profile'}">Volver</a>
+                <button style="background-color: #086A87; color: aliceblue;" type="submit" class="btn btn-default">Guardar</button>
+            </div>
+        </center>
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<style>
+    #login-dp{
+        min-width: 350px;
+        color:black;
+        padding: 14px 14px 0;
+        overflow:hidden;
+    //  background-color:rgba(255,255,255,.8);
+        background-color: #f0ad4e;
+    }
+    #login-dp .bottom{
+        background-color:rgba(255,255,255,.8);
+        border-top:1px solid #ddd;
+        clear:both;
+        padding:14px;
+    }
+    @media(max-width:768px){
+        #login-dp{
+            background-color: inherit;
+            color: #fff;
+        }
+        #login-dp .bottom{
+            background-color: inherit;
+            border-top:0 none;
+        }
+    }
+    .topnav {
+        overflow: hidden;
+        background-color:#000000;
+    }
+
+
+    .topnav a {
+        float: left;
+        display: block;
+        color: #FF1493;
+        text-align: center;
+        padding: 16px 18px;
+        font-size: 19px;
+    }
+
+    .topnav a:hover {
+        background-color: #FFC0CB;
+        color: black;
+    }
+
+    .topnav a.active {
+        background-color:#FF1493;
+        color: black;
+    }
+
+    .btn:hover
+    {
+        background-color: #ffb812;
+        color:maroon;
+    }
+
+    .topnav a.bienvenido {
+        background-color:#C71585;
+        color: black;
+    }
+
+    .container {
+        position: relative;
+        width:40%;
+    }
+
+    .image {
+        width:80%;
+        height:60%;
+    }
+
+    .overlay {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        right: 0;
+        background-color:rgba(31,31, 31, 0, 9);
+        -webkit-transition: opacity 0.2s ;
+        overflow: hidden;
+        height:0;
+        transition: 0.5s ease;
+        opacity: 100;
+    }
+
+    .container:hover .overlay {
+        bottom: 0;
+        height: 100%;
+        opacity: 1;
+    }
+
+    .text {
+        white-space: nowrap;
+        color: black;
+        font-size: 60px;
+        position: absolute;
+        overflow: visible;
+        top: 60%;
+        left: 80%;
+        transform: translate(-300%, -300%);
+        -ms-transform: translate(-300%, -300%);
+    }
+</style>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Spring Security Tutorial</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/user/home">Seguridad</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a><i class="glyphicon glyphicon-user"></i><td th:text="${nameA}">Nombre </td></a></li>
+                <li><a th:href="${'/logout'}"><Afiliados>Cerrar Sesion</Afiliados></a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+
+
+
+</body>
+</html>

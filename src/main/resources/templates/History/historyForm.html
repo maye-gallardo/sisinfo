@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-image:url('/images/a.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        filter: contrast(200%);
+    }
+    .nav{
+        background-color: black;
+    }
+    .genera{
+        color: #E8F8F5;
+        background-color: black;
+        font-family: Calibri;
+        font-size: 15px;
+    }
+    a{
+        color: aliceblue;
+    }
+    .container{
+        padding-top: 3%;
+    }
+    .estil{
+        height: 40px;
+        width: 800px;
+        margin-left: 38em;
+        padding-top: 3em;
+    }
+    label{
+        font-size: 20px;
+        font-family: Calibri;
+        padding-right: 1%;
+    }
+
+
+</style>
+<head>
+    <title>Medical History</title>
+    <script src="/webjars/jquery/3.0.0"></script>
+    <script src="/webjars/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <link href="/webjars/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="genera">
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/histories"><span class="glyphicon glyphicon-home" aria-hidden="true" style="color: white;"></span></a></li>
+                <li><a style="color: white; font-size: 15px;" href="/history/new">Nueva historial</a></li>
+            </ul>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="color: white; font-size: 15px;" href="/user/profile"><span class="glyphicon glyphicon-user"></span></a></li>
+                    <li><a style="color: white; font-size: 15px;" th:href="${'/logout'}"><Afiliados>Cerrar Sesion</Afiliados></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <br/>
+    <form class="form-horizontal" th:object="${history}" th:action="@{/history}" method="post" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" name="user" th:value="${use.id}"/>
+        <div class="estil">
+            <div style="width: 500px;" class="form-group">
+                <label>Titulo:</label>
+                <input type="text" class="form-control" th:field="*{title}"/>
+                <span style="color: red;" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Errors</span>
+            </div>
+
+            <div style="width: 500px;" class="form-group">
+                <label>Texto:</label>
+                <input type="text" class="form-control" th:field="*{text}"/>
+                <span style="color: red;" th:if="${#fields.hasErrors('text')}" th:errors="*{text}">Errors</span>
+            </div>
+
+            <div style="width: 500px;" class="form-group">
+                <label>Comentario:</label>
+                <input type="text" class="form-control" th:field="*{commentary}"/>
+
+            </div>
+
+            <div style="width: 160px;" class="form-group">
+                <label>Fecha:</label>
+                <input type="date" class="form-control" th:field="*{date}"/>
+                <span style="color: red;" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Errors</span>
+            </div>
+
+            <div style="width: 160px;" class="form-group">
+                <label>Categoria:</label>
+                <select class="form-control" name="category" id="category">
+
+                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                </select>
+            </div>
+
+            <div>
+                <p>Seleccionar foto:</p>
+                <input type="file" name="file"/>
+            </div>
+
+            <div class="row">
+                <button style="background-color: #086A87; color: aliceblue;" type="submit" class="btn btn-default">Guardar</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>
