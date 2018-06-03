@@ -92,6 +92,10 @@ public class HistoryController {
         model.addAttribute("history", historyService.getHistory(id));
         Iterable<Category> Categories = categoryService.listAllCategorys();
         model.addAttribute("categories", Categories);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Users user = userService.findUserByEmail(auth.getName());
+        model.addAttribute("use",user );
         return "History/editHistory";
     }
 

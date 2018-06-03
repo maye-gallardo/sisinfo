@@ -20,23 +20,30 @@ public class Users {
     private Integer id;
 
     @NotNull
+    @Email(message = "Debe ingresar un email valido")
+    @NotEmpty(message = "Debe ingresar un email")
     private String email;
 
     @NotNull
+    @NotEmpty(message = "Debe ingresar un nombre")
     private String username;
 
     @NotNull
+    @NotEmpty(message = "Debe ingresar su apellido")
     private String lastname;
 
     private Date date;
 
     @NotNull
+    @NotEmpty(message = "Debe ingresar una ciudad")
     private String city;
 
     @NotNull
+    @NotEmpty(message = "Debe ingresar una direccion")
     private String direc;
 
     @NotNull
+    @NotEmpty(message = "Debe ingresar un password")
     private String password;
 
     private String passwordConfirm;

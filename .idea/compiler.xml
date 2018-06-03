@@ -6,9 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="maven-archiver" />
         <module name="Medical_History" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Medical_History" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

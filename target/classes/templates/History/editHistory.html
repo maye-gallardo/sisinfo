@@ -78,6 +78,7 @@
     <br/>
     <form class="form-horizontal" th:object="${history}" th:action="@{/history}" method="post" enctype="multipart/form-data">
         <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" name="user" th:value="${use.id}"/>
         <div class="estil">
             <div style="width: 500px; margin-left:37em;" class="form-group">
                 <label>Titulo:</label>

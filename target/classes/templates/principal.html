@@ -56,11 +56,15 @@
         <div class="col-md-7">
             <form th:action="@{/login}" method="POST" class="form-signin">
                     <br/>
-                    <input type="text" id="email" name="email"  th:placeholder="email"
-                           class="form-control" style="width: 250px; length: 100px;"/> <br/>
+                <input type="text" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                       oninvalid="setCustomValidity('Ingresa un correo electronico válido')"
+                       onchange="try{setCustomValidity('')}catch(e){}" id="email" name="email"
+                       th:placeholder="email" class="form-control" style="width: 250px; length: 100px;"/> <br/>
 
-                    <input type="password"  th:placeholder="contraseña"
-                           id="password" name="password" class="form-control" style="width: 250px; length: 100px;" /> <br />
+                <input type="password"  th:placeholder="contraseña"
+                       id="password" required="required" oninvalid="setCustomValidity('No puede estar vacío')"
+                       onchange="try{setCustomValidity('')}catch(e){}" name="password" class="form-control"
+                       style="width: 250px; length: 100px;" /><br />
                 <div class="boton">
                     <button>Login</button>
                 </div>

@@ -49,11 +49,22 @@
                     <div class="col-sm-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                            <input type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"  onchange="try{setCustomValidity('')}catch(e){}" id="email" th:field="*{email}" placeholder="Email"
-                                   class="form-control" />
+                            <input type="text" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                                   onchange="try{setCustomValidity('')}catch(e){}" id="email" name="email"
+                                   th:placeholder="Email" class="form-control"/>
                         </div>
-                        <label style="color: #C70039;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-                               class="validation-message"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" required="required" pattern="[A-Za-z]{1,}"
+                                   onchange="try{setCustomValidity('')}catch(e){}" id="username" name="username"
+                                   th:placeholder="Nombre" class="form-control"/>
+
+                        </div>
                     </div>
                 </div>
 
@@ -62,52 +73,20 @@
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 
-                            <input type="text"  pattern="[A-Za-z]{1,}" onchange="try{setCustomValidity('')}catch(e){}"  id="username" th:field="*{username}" placeholder="Nombre"
-                                   class="form-control" />
-
+                            <input type="text" required="required" pattern="[A-Za-z]{1,}"
+                                   onchange="try{setCustomValidity('')}catch(e){}" id="lastname" name="lastname"
+                                   th:placeholder="Apellido" class="form-control"/>
                         </div>
-                        <label th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
-                               class="validation-message"></label>
-                        <label th:if="${message}" th:errors="*{username}"
-                               class="validation-message"></label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-
-                            <input type="text"  pattern="[A-Za-z]{1,}" onchange="try{setCustomValidity('')}catch(e){}"  id="lastname" th:field="*{lastname}" placeholder="Apellido"
-                                   class="form-control" />
-
-                        </div>
-                        <label style="color: #C70039;" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"
-                               class="validation-message"></label>
                     </div>
                 </div>
 
                 <div style="width: 160px; margin-left: 8em;" class="form-group">
                     <label>Fecha de nacimiento:</label>
                     <div class="deta">
-                        <input type="date" th:field="*{date}" pattern="[0-9]{1,}"  oninvalid="setCustomValidity('Ingresa solo números')" onchange="try{setCustomValidity('')}catch(e){}" placeholder="Date"
-                               class="form-control" />
-                    </div>
-                    <!--<input type="date" class="form-control" th:field="*{date}"/>-->
-                    <!--<span style="color: red;" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Errors</span>-->
-                </div>
-
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-                            <input type="text"  pattern="[A-Za-z]{1,}" onchange="try{setCustomValidity('')}catch(e){}"  id="city" th:field="*{city}" placeholder="Ciudad"
-                                   class="form-control" />
-
-                        </div>
-                        <label style="color: #C70039;" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"
-                               class="validation-message"></label>
+                        <input type="date" th:field="*{date}" pattern="[0-9]{1,}"
+                               oninvalid="setCustomValidity('Ingresa solo números')" onchange="try{setCustomValidity('')}catch(e){}"
+                               id="date" name="date" required="required"
+                               placeholder="Date" class="form-control" />
                     </div>
                 </div>
 
@@ -115,13 +94,22 @@
                     <div class="col-sm-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-
-                            <input type="text"  onchange="try{setCustomValidity('')}catch(e){}" id="direc" th:field="*{direc}" placeholder="Direccion"
-                                   class="form-control" />
+                            <input type="text" required="required" pattern="[A-Za-z]{1,}"
+                                   onchange="try{setCustomValidity('')}catch(e){}" id="city" name="city"
+                                   th:placeholder="Ciudad" class="form-control"/>
 
                         </div>
-                        <label style="color: #C70039;" th:if="${#fields.hasErrors('direc')}" th:errors="*{direc}"
-                               class="validation-message"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                            <input type="text" required="required" pattern="[A-Za-z]{1,}"
+                                   onchange="try{setCustomValidity('')}catch(e){}" id="direc" name="direc"
+                                   th:placeholder="Direccion" class="form-control"/>
+                        </div>
                     </div>
                 </div>
 
@@ -129,11 +117,10 @@
                     <div class="col-sm-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input type="password" th:field="*{password}"
-                                   placeholder="Contraseña" class="form-control" />
+                            <input type="password"  th:placeholder="contraseña"
+                                   id="password" required="required" oninvalid="setCustomValidity('No puede estar vacío')"
+                                   onchange="try{setCustomValidity('')}catch(e){}" name="password" class="form-control"/>
                         </div>
-                        <label style="color: #C70039;" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-                                class="validation-message"></label>
                     </div>
                 </div>
 
@@ -165,6 +152,10 @@
                     var input5 = document.getElementById('date');
                     input5.oninvalid = function(event) {
                         event.target.setCustomValidity('Ingresa una fecha de nacimiento valido ej. 01/05/1997');
+                    }
+                    var input6 = document.getElementById('direc');
+                    input6.oninvalid = function(event) {
+                        event.target.setCustomValidity('Ingresa una direccion');
                     }
                 </script>
 
