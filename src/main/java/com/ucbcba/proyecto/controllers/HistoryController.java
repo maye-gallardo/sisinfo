@@ -127,7 +127,7 @@ public class HistoryController {
         return "History/histories";
     }
 
-   /* @RequestMapping(value = "/histories/filtrar/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/histories/filtrar/{id}", method = RequestMethod.GET)
     public String filtrar(@PathVariable int id,Model model) {
         List<History> histories=(List<History>)historyService.listAllHistories();
         List<History> aux=new ArrayList<>();
@@ -141,7 +141,7 @@ public class HistoryController {
         }
         model.addAttribute("histories", aux);
         return "History/histories";
-    }*/
+    }
     
     @RequestMapping(value = "/histories/title", method = RequestMethod.GET)
     public String listOrderByTitle(Model model) {
