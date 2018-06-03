@@ -75,14 +75,16 @@
         <div class="estil">
             <div style="width: 500px;" class="form-group">
                 <label>Titulo:</label>
-                <input type="text" class="form-control" th:field="*{title}"/>
-                <span style="color: red;" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Errors</span>
+                <input type="text" required="required" pattern="[A-Za-z]{1,}"
+                       onchange="try{setCustomValidity('')}catch(e){}" id="title" name="title"
+                       class="form-control"/>
             </div>
 
             <div style="width: 500px;" class="form-group">
                 <label>Texto:</label>
-                <input type="text" class="form-control" th:field="*{text}"/>
-                <span style="color: red;" th:if="${#fields.hasErrors('text')}" th:errors="*{text}">Errors</span>
+                <input type="text" required="required" pattern="[A-Za-z]{1,}"
+                       onchange="try{setCustomValidity('')}catch(e){}" id="text" name="text"
+                       class="form-control"/>
             </div>
 
             <div style="width: 500px;" class="form-group">
@@ -93,8 +95,10 @@
 
             <div style="width: 160px;" class="form-group">
                 <label>Fecha:</label>
-                <input type="date" class="form-control" th:field="*{date}"/>
-                <span style="color: red;" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Errors</span>
+                <input type="date" th:field="*{date}" pattern="[0-9]{1,}"
+                       oninvalid="setCustomValidity('Ingresa solo números')" onchange="try{setCustomValidity('')}catch(e){}"
+                       id="date" name="date" required="required"
+                       placeholder="Date" class="form-control" />
             </div>
 
             <div style="width: 160px;" class="form-group">

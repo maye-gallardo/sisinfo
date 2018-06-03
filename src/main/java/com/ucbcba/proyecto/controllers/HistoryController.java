@@ -126,6 +126,22 @@ public class HistoryController {
         model.addAttribute("histories", aux);
         return "History/histories";
     }
+
+    @RequestMapping(value = "/histories/filtrar/{id}", method = RequestMethod.GET)
+    public String filtrar(@PathVariable int id,Model model) {
+        List<History> histories=(List<History>)historyService.listAllHistories();
+        List<History> aux=new ArrayList<>();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Users user = userService.findUserByEmail(auth.getName());
+
+        for (History history : histories){
+            if (history.getCategory().getId()== id && user.getId() == history.getUser().getId() ){
+                aux.add(history);
+            }
+        }
+        model.addAttribute("histories", aux);
+        return "History/histories";
+    }
     
     @RequestMapping(value = "/histories/title", method = RequestMethod.GET)
     public String listOrderByTitle(Model model) {

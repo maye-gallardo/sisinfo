@@ -25,6 +25,8 @@
         color: aliceblue;
     }
 
+
+
 </style>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -35,12 +37,23 @@
     <script src="/webjars/jquery/3.0.0"></script>
     <script src="/webjars/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <link href="/webjars/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script>
         function buscar() {
             var palabra=document.getElementById("x").value;
             location.href ="/histories/busqueda/" + palabra;
         }
+
+        function confSubmit(id) {
+            if (confirm("Esta seguro que desea eliminar el historial?")) {
+                location.href="/history/delete/"+$(id).attr("id");
+            }
+        }
+
+
     </script>
 </head>
 <body>
@@ -69,11 +82,34 @@
     </div>
 </nav>
 
+<div class="modal fade" id="myModal" role="dialog">
+   <h1>hola</h1>
+</div>
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Categorias
+        <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+        <li><a href="/histories/filtrar/1">Analisis</a></li>
+        <li><a href="/histories/filtrar/2">Consulta</a></li>
+        <li><a href="/histories/filtrar/3">Examen Medico</a></li>
+    </ul>
+</div>
 <div class="container">
     <div th:if="${not #lists.isEmpty(histories)}">
         <h1 style="color: #C70039">Historias</h1>
         <a  style="margin-left: 55em; color: black; font-size: 20px;" href="/histories/date"><span class="glyphicon glyphicon-sort-by-order"></span></a>
         <a  style="margin-left: 55em; color: black; font-size: 20px;" href="/histories/title"><span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a>
+        <!--<div class="dropdown">-->
+            <!--<button id="bt-categoria" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Categorias-->
+                <!--<span class="caret"></span></button>-->
+            <!--<ul class="dropdown-menu">-->
+                <!--<li><a href="/histories/filtrar/1">Analisis</a></li>-->
+                <!--<li><a href="/histories/filtrar/2">Consulta</a></li>-->
+                <!--<li><a href="/histories/filtrar/3">Examen Medico</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+
+
         <table style="background-color: rgba(255,255,255,0.68); padding-right: 30%;" bordercolor="#0D2C45" border="2px" class="table">
             <tr style="color: #080314">
                 <th>Titulo</th>
@@ -86,8 +122,11 @@
                 <td style="font-family: Calibri; font-size: 15px; font-weight: 500;" th:text="${history.date}">Fecha</td>
                     <td style="font-family: Calibri; font-size: 15px; font-weight: 500;" th:text="${history.category.name}">Fecha</td>
             <td style="margin-right: 60%;">
-                    <a class="btn btn-info" th:href="${ '/history/' + history.id}">Ver</a>
-                    <a class="btn btn-danger" th:href="${ '/history/delete/' + history.id}">Eliminar</a>
+                <a class="btn btn-info" th:href="${ '/history/' + history.id}" >Ver</a>
+                <div class="btn btn-danger"  onClick="confSubmit(this);" th:id="${history.id}">Eliminar</div>
+                <!--<form th:action="${'/history/delete/' + history.id}" method="get">-->
+                    <!--<button type="submit" class="btn btn-warning">Eliminar</button>-->
+                <!--</form>-->
                     <a class="btn btn-warning" th:href="${ '/history/edit/' + history.id}">Editar</a>
                 </td>
             </tr>
@@ -95,6 +134,7 @@
 
     </div>
 </div>
+
 
 </body>
 </html>
