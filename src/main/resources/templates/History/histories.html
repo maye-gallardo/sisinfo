@@ -99,16 +99,6 @@
         <h1 style="color: #C70039">Historias</h1>
         <a  style="margin-left: 55em; color: black; font-size: 20px;" href="/histories/date"><span class="glyphicon glyphicon-sort-by-order"></span></a>
         <a  style="margin-left: 55em; color: black; font-size: 20px;" href="/histories/title"><span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a>
-        <!--<div class="dropdown">-->
-            <!--<button id="bt-categoria" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Categorias-->
-                <!--<span class="caret"></span></button>-->
-            <!--<ul class="dropdown-menu">-->
-                <!--<li><a href="/histories/filtrar/1">Analisis</a></li>-->
-                <!--<li><a href="/histories/filtrar/2">Consulta</a></li>-->
-                <!--<li><a href="/histories/filtrar/3">Examen Medico</a></li>-->
-            <!--</ul>-->
-        <!--</div>-->
-
 
         <table style="background-color: rgba(255,255,255,0.68); padding-right: 30%;" bordercolor="#0D2C45" border="2px" class="table">
             <tr style="color: #080314">
@@ -124,10 +114,7 @@
             <td style="margin-right: 60%;">
                 <a class="btn btn-info" th:href="${ '/history/' + history.id}" >Ver</a>
                 <div class="btn btn-danger"  onClick="confSubmit(this);" th:id="${history.id}">Eliminar</div>
-                <!--<form th:action="${'/history/delete/' + history.id}" method="get">-->
-                    <!--<button type="submit" class="btn btn-warning">Eliminar</button>-->
-                <!--</form>-->
-                    <a class="btn btn-warning" th:href="${ '/history/edit/' + history.id}">Editar</a>
+                <a class="btn btn-warning" th:href="${ '/history/edit/' + history.id}">Editar</a>
                 </td>
             </tr>
         </table>
